@@ -81,7 +81,7 @@ gulp.task("copy-assets", function() {
   gulp.src("./audio/**/*")
   .pipe(gulp.dest("./build/audio"));
 
-  gulp.src("./index.ejs")
+  gulp.src("./index.html")
   .pipe(gulp.dest("./build/"));
 });
 
@@ -170,7 +170,7 @@ gulp.task("dev-fast", [
   "src-dev-fast"
 ], function() {
   gulp.watch([
-    "index.ejs",
+    "index.html",
     "css/**/*",
     "**/*.jsx",
     "!build/**",
@@ -187,7 +187,7 @@ gulp.task("dev", [
   "src-dev"
 ], function() {
   gulp.watch([
-    "index.ejs",
+    "index.html",
     "css/**/*",
     "**/*.js",
     "**/*.jsx",

@@ -68,7 +68,6 @@ class Grid {
         self.$imageHolder.removeClass('basic-way');
       }; 
 
-      console.log("CALL BUILD?");
       self.build()
     }, 5000);
 
