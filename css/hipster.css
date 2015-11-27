@@ -1,0 +1,126 @@
+html,body {
+  text-decoration: none;
+  font: normal normal normal 1.0em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
+  background: #fff;
+}
+
+* {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   -ms-user-select: none;
+   user-select: none;
+}
+
+#youre-hipster {
+  z-index: 9999999999999;
+}
+
+.dance{
+  background: url(/images/smile.png) no-repeat center center !important;
+}
+
+.other-way{
+  background: url(/images/crazy-shit2.png) no-repeat center center;
+}
+
+.basic-way{
+  background: url(/images/crazy-shit.png) no-repeat center center !important;
+}
+
+.change {
+  left: 5px;
+}
+
+#hipster {
+  background: url(images/hip.png) no-repeat center center;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  width: 960px;
+  height: 300px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+#footer {
+  z-index: 99999999999;
+  opacity: 0.5;
+  height: 35px;
+  line-height: 34px;
+  text-align: left;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 0;
+  overflow: hidden;
+  color: #000;
+  text-decoration: none;
+  font-variant: normal;
+}
+
+#footer:hover {
+  opacity: 1;
+}
+
+#footer a {
+  color: #111;font-weight: normal;font-style: normal;text-decoration: underline;font-variant: normal;
+}
+
+.large {}
+
+#image-holder{
+  -webkit-transition: -webkit-transform 3s ease-in-out;
+  -moz-transition: -moz-transform 3s ease-in-out;
+  -ms-transform: -ms-transform 3s ease-in-out;
+  -o-transition: -o-transform 3s ease-in-out;
+}
+
+@-webkit-keyframes wiggleEven {
+  from {
+    -webkit-transform: rotateZ(10deg) translateY(4px);
+  }
+  50% {
+    -webkit-transform: rotateZ(-20deg) translateY(-4px);
+  }
+  to {
+    -webkit-transform: rotateZ(10deg) translateY(4px);
+  }
+}
+@-webkit-keyframes wiggleOdd {
+  from {
+    -webkit-transform: rotateZ(-20deg) translateY(-4px);
+  }
+  50% {
+    -webkit-transform: rotateZ(2deg) translateY(4px);
+  }
+  to {
+    -webkit-transform: rotateZ(-20deg) translateY(-4px);
+  }
+}
+@keyframes wiggleEven {
+  from {
+    transform: rotateZ(10deg) translateY(4px);
+  }
+  50% {
+    transform: rotateZ(-20deg) translateY(-4px);
+  }
+  to {
+    transform: rotateZ(10deg) translateY(4px);
+  }
+}
+@keyframes wiggleOdd {
+  from {
+    transform: rotateZ(-20deg) translateY(-4px);
+  }
+  50% {
+    transform: rotateZ(2deg) translateY(4px);
+  }
+  to {
+    transform: rotateZ(-20deg) translateY(-4px);
+  }
+}
