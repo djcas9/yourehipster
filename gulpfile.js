@@ -136,9 +136,9 @@ function buildScript(file, watch) {
       .pipe(source("hipster.js"))
       .pipe(gulp.dest("./build/"))
       .pipe(buffer())
-      // .pipe(uglify({
-        // mangle: false
-      // }))
+      .pipe(uglify({
+        mangle: false
+      }))
       .pipe(rename("hipster.js"))
       .pipe(gulp.dest("./build"))
   }
