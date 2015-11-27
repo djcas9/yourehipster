@@ -17,7 +17,7 @@ html,body {
   z-index: 9999999999999;
 }
 
-#load-hack {
+.load-hack {
   display:none;
   overflow:hidden;
   opacity: 0;
