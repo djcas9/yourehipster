@@ -2,6 +2,7 @@ DEPS = $(go list -f '{{range .TestImports}}{{.}} {{end}}' ./...)
 WEBSITE="https://criticalstack.com"
 DESCRIPTION="CSOS API server and user interface."
 NAME="csos-server"
+GULP="node_modules/gulp/bin/gulp.js"
 
 BUILDVERSION=$(shell cat VERSION)
 
@@ -10,24 +11,23 @@ SHA=$(git rev-parse --short HEAD)
 
 client: clientDeps
 	@echo "Building client..."
-	@gulp prod
+	@${GULP} prod
 
 build: server client
 	@echo "Done"
 
 clientDeps:
 	@echo "Fetching client dependencies..."
-	@npm install gulp -g
 	@npm install
 
 jslint:
-	@gulp lint-dev
+	@${GULP} lint-dev
 
 watch:
-	@gulp dev
+	@${GULP} dev
 
 watch-fast:
-	@gulp dev-fast
+	@${GULP} dev-fast
 
 clean:
 	@rm -rf build/
