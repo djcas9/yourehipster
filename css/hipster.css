@@ -17,6 +17,12 @@ html,body {
   z-index: 9999999999999;
 }
 
+#load-hack {
+  display:none;
+  overflow:hidden;
+  opacity: 0;
+}
+
 .dance{
   background: url(/images/smile.png) no-repeat center center !important;
 }
