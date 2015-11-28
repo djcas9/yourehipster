@@ -1,6 +1,6 @@
 html,body {
   text-decoration: none;
-  font: normal normal normal 1.0em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
+  font: normal normal normal 0.8em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
   background: #fff;
 }
 
@@ -37,6 +37,17 @@ html,body {
 
 .change {
   left: 5px;
+}
+
+.wiggle{
+  -webkit-animation-name: wiggleEven;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease;
+  animation-name: wiggleEven;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
 }
 
 #hipster {
@@ -88,45 +99,23 @@ html,body {
 
 @-webkit-keyframes wiggleEven {
   from {
-    -webkit-transform: rotateZ(10deg) translateY(4px);
+    -webkit-transform: rotateZ(5deg) translateY(2px);
   }
   50% {
-    -webkit-transform: rotateZ(-20deg) translateY(-4px);
+    -webkit-transform: rotateZ(-10deg) translateY(-2px);
   }
   to {
-    -webkit-transform: rotateZ(10deg) translateY(4px);
-  }
-}
-@-webkit-keyframes wiggleOdd {
-  from {
-    -webkit-transform: rotateZ(-20deg) translateY(-4px);
-  }
-  50% {
-    -webkit-transform: rotateZ(2deg) translateY(4px);
-  }
-  to {
-    -webkit-transform: rotateZ(-20deg) translateY(-4px);
+    -webkit-transform: rotateZ(5deg) translateY(2px);
   }
 }
 @keyframes wiggleEven {
   from {
-    transform: rotateZ(10deg) translateY(4px);
+    transform: rotateZ(5deg) translateY(2px);
   }
   50% {
-    transform: rotateZ(-20deg) translateY(-4px);
+    transform: rotateZ(-10deg) translateY(-2px);
   }
   to {
-    transform: rotateZ(10deg) translateY(4px);
-  }
-}
-@keyframes wiggleOdd {
-  from {
-    transform: rotateZ(-20deg) translateY(-4px);
-  }
-  50% {
-    transform: rotateZ(2deg) translateY(4px);
-  }
-  to {
-    transform: rotateZ(-20deg) translateY(-4px);
+    transform: rotateZ(5deg) translateY(2px);
   }
 }

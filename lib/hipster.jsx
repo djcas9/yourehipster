@@ -56,10 +56,22 @@ class Hipster extends React.Component {
 
         var t = this.getTime();
 
+        // console.log(t)
+
         if (t >= 13.25 && t < 55) {
           self._grid.build();
+
+          if (!self._grid.dance) {
+            self._grid.anDance();
+          }
+        } else if (t >=48 && t < 55) {
         } else if (t >= 55) {
-           // wait
+          if (self._grid.dance) {
+            // wait
+            self._grid.anStop(function() {
+              self._grid.anStart();
+            });
+          }
         }
     });
   }
@@ -68,7 +80,7 @@ class Hipster extends React.Component {
     var self = this;
 
     if (self._grid) {
-      self._grid.start();
+      self._grid.run();
       return
     }
 

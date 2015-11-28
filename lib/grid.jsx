@@ -40,26 +40,69 @@ class Grid {
     return self;
   }
 
-  start() {
+
+  anStop(callback) {
     var self = this;
+    clearInterval(self.changeImage);
 
-    $("#image-holder").remove();
-    self.$imageHolder = $('<div id="image-holder">');
+    self.$imageHolder.removeClass('dance');
+    self.dance = false;
 
-    var css3Tran = {
-      "-webkit-transition": "-webkit-transform 3s ease-in-out",
-      "-moz-transition": "-moz-transform 3s ease-in-out",
-      "-ms-transform": "-ms-transform 3s ease-in-out",
-      "-o-transition": "-o-transform 3s ease-in-out"      
-    };
+    self.$imageHolder.attr('style', '');
 
     self.$imageHolder.addClass('basic-way').css(self.css)
-    .css(css3Tran).appendTo('body');
+    .css(self.css3Tran);
 
     self.imageRotate = 1;
     self.imageScale = 100;
 
-    var toggleFace = setInterval(function() {
+
+    // var rotate = 0;
+    // var scale = 0;
+
+    // self.$imageHolder.css({
+      // '-moz-transform': 'rotate('+rotate+'deg) scale('+scale+')',
+      // '-ms-transform': 'rotate('+rotate+'deg) scale('+scale+')',
+      // '-o-transform': 'rotate('+rotate+'deg) scale('+scale+')',
+      // '-webkit-transform': 'rotate('+rotate+'deg) scale('+scale+')'
+    // });
+
+    return callback();
+  }
+
+  anDance() {
+    var self = this;
+
+    self.changeImage = setInterval(function() {
+      self.image();
+    }, 20);
+
+    self.dance = true;
+
+    clearInterval(self.toggleFace);
+
+    if ($("#hipster").length <= 0) {
+      $('<div id="hipster" />').appendTo('body');
+    }
+
+    self.$imageHolder.removeClass('wiggle');
+    self.$imageHolder.removeClass('other-way');
+    self.$imageHolder.removeClass('basic-way');
+    self.$imageHolder.addClass('dance');
+    self.dance = true;
+
+    self.imageRotate = 20000;
+    self.imageScale = 20000;
+  }
+
+
+  anStart() {
+    var self = this;
+
+    self.imageRotate = 1;
+    self.imageScale = 100;
+
+    self.toggleFace = setInterval(function() {
       if (self.$imageHolder.hasClass('other-way')) {
         self.$imageHolder.removeClass('other-way');
         self.$imageHolder.addClass('basic-way');
@@ -71,73 +114,29 @@ class Grid {
       self.build()
     }, 5000);
 
-    var changeImage = setInterval(function() {
-      self.image();
-    }, 20);
+  }
 
-    setTimeout(function() {
-      $('<div id="hipster" />').appendTo('body');
-      clearInterval(toggleFace);
+  run() {
+    var self = this;
 
-      self.$imageHolder.removeClass('other-way');
-      self.$imageHolder.removeClass('basic-way');
-      self.$imageHolder.addClass('dance');
-      self.dance = true;
+    self.css3Tran = {
+      "-webkit-transition": "-webkit-transform 3s ease-in-out",
+      "-moz-transition": "-moz-transform 3s ease-in-out",
+      "-ms-transform": "-ms-transform 3s ease-in-out",
+      "-o-transition": "-o-transform 3s ease-in-out"      
+    };
 
-      self.imageRotate = 20000;
-      self.imageScale = 20000;
-    }, 13500);
+    $("#image-holder").remove();
+    self.$imageHolder = $('<div id="image-holder">');
 
-    setInterval(function() {
-      clearInterval(changeImage);
+    self.$imageHolder.addClass('basic-way wiggle').css(self.css)
+    .css(self.css3Tran).appendTo('body');
 
-      self.$imageHolder.removeClass('dance');
-      self.dance = false;
+    self.anStop(function() {
+      self.anStart()
+      self.build();
+    });
 
-      self.$imageHolder.attr('style', '');
-
-      self.$imageHolder.addClass('basic-way').css(self.css)
-      .css(css3Tran);
-
-      self.imageRotate = 1;
-      self.imageScale = 100;
-      
-      toggleFace = setInterval(function() {
-        if (self.$imageHolder.hasClass('other-way')) {
-          self.$imageHolder.removeClass('other-way');
-          self.$imageHolder.addClass('basic-way');
-        } else {
-          self.$imageHolder.addClass('other-way');
-          self.$imageHolder.removeClass('basic-way');
-        }; 
-
-        console.log("CALL BUILD?");
-        self.build()
-      }, 5000);
-
-      setTimeout(function() {
-        clearInterval(toggleFace);
-
-        self.imageRotate = 20000;
-        self.imageScale = 20000;
-
-        changeImage = setInterval(function() {
-          self.$imageHolder.removeClass('other-way');
-          self.$imageHolder.removeClass('basic-way');
-
-          self.$imageHolder.addClass('dance');
-          self.dance = true;
-
-          self.image();
-        }, 30);
-
-      self.firstInterval = 13600;
-
-      }, self.firstInterval);
-
-    }, 55000);
-
-    self.build();
   }
 
 
@@ -167,14 +166,16 @@ class Grid {
       };
 
       if (scale % 2 == 0) {
-        scale = parseFloat('-' + scale);
+        scale = parseFloat('-' + scale - 200);
       };
 
-      if (self.dance) {
-        scale = "1."+scale;
-      } else {
-        scale = "0."+scale;
-      }
+      // if (self.dance) {
+        // scale = "1."+scale;
+      // } else {
+        // scale = "0."+scale;
+      // }
+
+      scale = "0."+scale;
 
       self.$imageHolder.css({
         '-moz-transform': 'rotate('+rotate+'deg) scale('+scale+')',
