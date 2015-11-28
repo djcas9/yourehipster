@@ -25,8 +25,8 @@ class Hipster extends React.Component {
     var self = this;
     self.loaded = false;
 
-    this._grid = null;
-    this.song = new buzz.sound("/audio/crazyshit.ogg", {
+    self._grid = null;
+    self.song = new buzz.sound("/audio/crazyshit.ogg", {
       loop: true,
       volume: 100,
       webAudioApi: true
@@ -36,7 +36,7 @@ class Hipster extends React.Component {
       alert("Your browser is too old, time to update!");
     }
 
-    this.song.bind("canplaythrough", function() {
+    self.song.bind("canplaythrough", function() {
       if (!self.loaded) {
         self.loaded = true;
 
@@ -73,6 +73,12 @@ class Hipster extends React.Component {
             });
           }
         }
+    });
+
+
+    $(document).on("click", "a.stop", function(e) {
+      e.preventDefault();
+      self.song.toggleMute();
     });
   }
 

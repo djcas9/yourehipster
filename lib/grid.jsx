@@ -34,7 +34,7 @@ class Grid {
     self.$grid.css(self.css);
 
     self.$footer = $('<div id="footer" />');
-    self.$footer.html('<a href="http://twitter.com/mephux">Hipster Powered By Mephux</a> | Keep it Hipster Kids! | <span class="song-time">00:00</span>');
+    self.$footer.html('<a href="http://twitter.com/mephux">Hipster Powered By Mephux</a> | <a href="#" class="stop">Mute</a> | <span class="song-time">00:00</span>');
     self.$footer.appendTo('body');
 
     return self;
